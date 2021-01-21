@@ -1,17 +1,28 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <div class="container-fluid">
-        <ul class="nav navbar-nav">
-            <li routerLinkActive="active">
-                <a routerLink="books">Livres</a>
-            </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <li routerLinkActive="active">
-                <a routerLink="auth/signup">Crée un compte</a>
-            </li>
-            <li routerLinkActive="active">
-                <a routerLink="auth/signin">Connexion</a>
-            </li>
-        </ul>
-    </div>
+<a class="navbar-brand" routerLink="">Angular | Bibilotheque</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
+    aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+      <ul class="nav navbar-nav">
+        <li class="nav-item" routerLinkActive="active">
+          <a *ngIf="isAuth" class="nav-link" routerLink="books">Livres</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="nav-item" routerLinkActive="active">
+          <a *ngIf="!isAuth" class="nav-link" routerLink="auth/signup">Crée un compte</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a *ngIf="!isAuth" class="nav-link" routerLink="auth/signin">Connexion</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+            <a *ngIf="isAuth" class="nav-link" (click)="onSignOut()" >Deconnexion</a>
+        </li>
+      </ul>
+    </ul>
+  </div>
 </nav>
